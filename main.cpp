@@ -1,6 +1,10 @@
 #include "src/CmdLineOptions.h"
 #include "src/MicroCore.h"
 
+#include "src/jsonrpc/MyStubServer.h"
+
+#include <jsonrpccpp/server/connectors/httpserver.h>
+
 using boost::filesystem::path;
 
 using namespace std;
@@ -97,6 +101,16 @@ int main(int ac, const char* av[]) {
     if (testnet)
         deamon_url = "http:://127.0.0.1:28081";
 
+
+    jsonrpc::HttpServer httpserver(8383);
+
+    xmreg::MyStubServer s(httpserver);
+
+    cout << "jsonrpc starts listening" << endl;
+
+    s.StartListening();
+    getchar();
+    s.StopListening();
 
     cout << "EXIT_SUCCESS" << endl;
 

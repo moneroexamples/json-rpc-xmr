@@ -3,6 +3,12 @@
 Example of using [libjson-rpc-cpp](https://github.com/cinemast/libjson-rpc-cpp/) to provide monero related RPC service.
 
 
+#How to call RPC from JSON
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"jsonrpc": "2.0", "id": "mwo", "method": "sayHello", "params": {"name":"marcin"}}' http://localhost:8383
+```
+
 ## Other examples
 
 Other examples can be found on  [github](https://github.com/moneroexamples?tab=repositories).
